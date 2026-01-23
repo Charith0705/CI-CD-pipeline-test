@@ -1,20 +1,14 @@
-# 1️⃣ Base image
-FROM node:18-alpine
+# Use nginx to serve React
+FROM nginx:alpine
 
-# 2️⃣ Set working directory inside container
-WORKDIR /app
+# Remove default nginx files
+RUN rm -rf /usr/share/nginx/html/*
 
-# 3️⃣ Copy package files first (layer caching)
-COPY package*.json ./
+# Copy React build from frontend folder
+COPY frontend/build /usr/share/nginx/html
 
-# 4️⃣ Install dependencies
-RUN npm install
+# Expose nginx port
+EXPOSE 80
 
-# 5️⃣ Copy application code
-COPY . .
-
-# 6️⃣ Expose app port
-EXPOSE 3000
-
-# 7️⃣ Start the app
-CMD ["npm", "start"]
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]
