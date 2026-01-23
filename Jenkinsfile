@@ -25,11 +25,14 @@ pipeline {
         }
 
 
-        stage('Run Tests') {
+        stage('Test React App') {
             steps {
-                sh 'docker run --rm cicd-demo-app npm test'
+                dir('frontend') {
+                    sh 'npm test -- --watchAll=false'
+                }
             }
         }
+
 
         stage('Deploy Container') {
             steps {
