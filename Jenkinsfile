@@ -18,7 +18,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh 'npm test'
+                sh 'docker run --rm cicd-demo-app npm test'
             }
         }
 
