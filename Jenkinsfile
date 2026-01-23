@@ -6,7 +6,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/<your-username>/cicd-demo-app.git'
+                    url: 'https://github.com/Charith0705/CI-CD-pipeline-test.git'
             }
         }
 
