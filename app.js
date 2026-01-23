@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 
-// Serve frontend files
-app.use(express.static("public"));
+app.use(cors());
+app.use(express.json());
 
-// Backend API
+// API endpoint
 app.get("/api/status", (req, res) => {
   res.json({
     application: "CI/CD Demo App",
@@ -15,7 +16,7 @@ app.get("/api/status", (req, res) => {
   });
 });
 
-const PORT = 3000;
+const PORT = 5000
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Backend running on port ${PORT}`);
 });
