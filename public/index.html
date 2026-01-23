@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CI/CD Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      text-align: center;
+      padding-top: 50px;
+    }
+    h1 { color: #38bdf8; }
+    .card {
+      background: #020617;
+      padding: 20px;
+      border-radius: 10px;
+      width: 60%;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🚀 CI/CD Pipeline Dashboard</h1>
+  <div class="card" id="data">
+    Loading status...
+  </div>
+
+  <script>
+    fetch("/api/status")
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("data").innerHTML = `
+          <p><b>Application:</b> ${data.application}</p>
+          <p><b>Status:</b> ${data.status}</p>
+          <p><b>Pipeline:</b> ${data.pipeline}</p>
+          <p><b>Environment:</b> ${data.environment}</p>
+          <p><b>Time:</b> ${data.time}</p>
+        `;
+      })
+      .catch(() => {
+        document.getElementById("data").innerText =
+          "Failed to load backend data";
+      });
+  </script>
+
+</body>
+</html>
