@@ -8,7 +8,7 @@ RUN rm -rf /usr/share/nginx/html/*
 COPY frontend/build /usr/share/nginx/html
 
 # Expose nginx port
-EXPOSE 3000
+EXPOSE 80
 
 # Start nginx
 CMD ["nginx", "-g", "daemon off;"]

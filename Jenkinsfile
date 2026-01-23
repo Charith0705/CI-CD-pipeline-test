@@ -38,7 +38,7 @@ pipeline {
             steps {
                 sh '''
                 docker rm -f cicd-demo-container || true
-                docker run -d -p 3000:3000 \
+                docker run -d -p 3000:80 \
                 --name cicd-demo-container cicd-demo-app
                 '''
             }
