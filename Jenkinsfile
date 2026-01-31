@@ -9,14 +9,17 @@ pipeline {
                     url: 'https://github.com/Charith0705/CI-CD-pipeline-test.git'
             }
         }
-    stage('Build React App') {
+        stage('Build React App') {
             steps {
-                dir('frontend') {
-                    sh 'npm install'
-                    sh 'npm run build'
+                nodejs('node18') {
+                    dir('frontend') {
+                        sh 'npm install'
+                        sh 'npm run build'
+                    }
                 }
             }
         }
+
 
         stage('Build Docker Image') {
             steps {
@@ -27,11 +30,14 @@ pipeline {
 
         stage('Test React App') {
             steps {
-                dir('frontend') {
-                    sh 'npm test -- --watchAll=false'
+                nodejs('node18') {
+                    dir('frontend') {
+                        sh 'npm test -- --watchAll=false'
+                    }
                 }
             }
         }
+
 
 
         stage('Deploy Container') {
