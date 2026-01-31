@@ -8,7 +8,7 @@ function App() {
   const [activeCell, setActiveCell] = useState(null); // Which cell is lit up?
   const [missedCell, setMissedCell] = useState(null); // Visual feedback for wrong click
 
-  const timerRef = useRef(null);
+  
   const speedRef = useRef(1000); // Speed in ms
 
   // Game Timer
