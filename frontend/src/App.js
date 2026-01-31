@@ -6,7 +6,7 @@ function App() {
   const [position, setPosition] = useState({ top: 150, left: 150 });
 
   const lastMoveTime = useRef(0);
-  const MOVE_DELAY = 600; // milliseconds (increase = slower)
+  const MOVE_DELAY = 800; // milliseconds (increase = slower)
 
   const moveBox = () => {
     const now = Date.now();
@@ -33,7 +33,7 @@ function App() {
 
   return (
     <div className="container" onMouseMove={moveBox}>
-      <h1>🎯 Catch the Box</h1>
+      <h1>🎯 Catch the Moving box</h1>
       <p>Move your mouse and click the box</p>
       <h2>Score: {score}</h2>
 
