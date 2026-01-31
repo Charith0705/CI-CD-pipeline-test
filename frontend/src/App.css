@@ -1,33 +1,105 @@
+/* App.css */
+:root {
+  --neon-blue: #00f3ff;
+  --neon-pink: #ff00ff;
+  --bg-color: #0d0d0d;
+  --grid-bg: #1a1a1a;
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: radial-gradient(circle, #0f172a, #2045ed);
+  background-color: var(--bg-color);
   color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   overflow: hidden;
 }
 
 .container {
-  height: 100vh;
   text-align: center;
-  padding-top: 20px;
-}
-
-.box {
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  background: #38bdf8;
-  color: black;
-  font-weight: bold;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: top 0.4s ease, left 0.4s ease;
-  user-select: none;
+  gap: 20px;
 }
 
-.box:hover {
-  transform: scale(1.1);
+h1 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-shadow: 0 0 10px var(--neon-blue);
+  margin-bottom: 0.5rem;
+}
+
+.stats {
+  display: flex;
+  gap: 2rem;
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3x3 Grid */
+  gap: 15px;
+  background: #222;
+  padding: 20px;
+  border-radius: 15px;
+  border: 2px solid #333;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  background-color: var(--grid-bg);
+  border-radius: 10px;
+  border: 2px solid #333;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  position: relative;
+}
+
+/* The Active "Target" Style */
+.cell.active {
+  background-color: var(--neon-blue);
+  border-color: white;
+  box-shadow: 0 0 15px var(--neon-blue), 0 0 30px var(--neon-blue);
+  transform: scale(0.95);
+}
+
+/* Wrong Click Feedback */
+.cell.miss {
+  background-color: var(--neon-pink);
+  box-shadow: 0 0 15px var(--neon-pink);
+  animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+button {
+  padding: 10px 30px;
+  font-size: 1.2rem;
+  background: transparent;
+  color: var(--neon-blue);
+  border: 2px solid var(--neon-blue);
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  box-shadow: 0 0 10px var(--neon-blue);
+  transition: 0.3s;
+}
+
+button:hover {
+  background: var(--neon-blue);
+  color: black;
 }
