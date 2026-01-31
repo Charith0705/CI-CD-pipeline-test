@@ -6,7 +6,7 @@ function App() {
   const [position, setPosition] = useState({ top: 150, left: 150 });
 
   const lastMoveTime = useRef(0);
-  const MOVE_DELAY = 600; // milliseconds (increase = slower)
+  const MOVE_DELAY = 400; // milliseconds (increase = slower)
 
   const moveBox = () => {
     const now = Date.now();
