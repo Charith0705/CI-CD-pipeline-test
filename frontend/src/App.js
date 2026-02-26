@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
 
+
 function App() {
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(30);
